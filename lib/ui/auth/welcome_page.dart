@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pasar/blocs/auth/auth_bloc.dart';
 import 'package:pasar/blocs/auth/auth_even.dart';
 
@@ -56,56 +57,93 @@ class WelcomePage extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                margin: EdgeInsets.only(
-                  left: 10,
-                  right: 10,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
+              Flexible(
+                flex: 1,
+                child: Column(
+                  children: <Widget>[
                     Container(
-                      child: RaisedButton(
-                        onPressed: () {
-                          BlocProvider.of<AuthBloc>(context)
-                              .add(AuthToRegister());
-                        },
-                        padding: EdgeInsets.only(
-                          left: 50,
-                          right: 50,
-                        ),
-                        color: Colors.blue[900],
-                        child: Text(
-                          'Daftar',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30.0),
-                        ),
+                      margin: EdgeInsets.only(
+                        left: 10,
+                        right: 10,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            child: RaisedButton(
+                              onPressed: () {
+                                BlocProvider.of<AuthBloc>(context)
+                                    .add(AuthToRegister());
+                              },
+                              padding: EdgeInsets.only(
+                                left: 50,
+                                right: 50,
+                              ),
+                              color: Colors.blue[900],
+                              child: Text(
+                                "Daftar",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              shape: new RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(30.0),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            child: OutlineButton(
+                              onPressed: () {
+                                BlocProvider.of<AuthBloc>(context)
+                                    .add(AuthToLogin());
+                              },
+                              borderSide: BorderSide(
+                                width: 1,
+                                style: BorderStyle.solid,
+                              ),
+                              padding: EdgeInsets.only(
+                                left: 50,
+                                right: 50,
+                              ),
+                              child: Text('Masuk'),
+                              shape: new RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(30.0),
+                              ),
+                            ),
+                          )
+                        ],
                       ),
                     ),
                     Container(
-                      child: OutlineButton(
-                        onPressed: () {
-                          BlocProvider.of<AuthBloc>(context).add(AuthToLogin());
-                        },
-                        borderSide: BorderSide(
-                          width: 1,
-                          style: BorderStyle.solid,
-                        ),
-                        padding: EdgeInsets.only(
-                          left: 50,
-                          right: 50,
-                        ),
-                        child: Text('Masuk'),
-                        shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30.0),
-                        ),
+                      child: Text("Atau masuk melalui sosial media"),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(bottom: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          RaisedButton(
+                            onPressed: () {},
+                            child: Icon(
+                              FontAwesomeIcons.facebookF,
+                              color: Colors.white,
+                            ),
+                            shape: CircleBorder(),
+                            color: Colors.blue[800],
+                          ),
+                          RaisedButton(
+                            onPressed: () {},
+                            child: Icon(
+                              FontAwesomeIcons.google,
+                              color: Colors.white,
+                            ),
+                            shape: CircleBorder(),
+                            color: Colors.red[800],
+                          ),
+                        ],
                       ),
-                    )
+                    ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
